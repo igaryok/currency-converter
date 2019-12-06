@@ -1,0 +1,17 @@
+.input-field {
+  font-size: inherit;
+  width: 20ch;
+  border: none;
+  border-bottom: lightgray solid 1px;
+  outline: none;
+
+  &:focus {
+    border-bottom: lightpink solid 1px;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
