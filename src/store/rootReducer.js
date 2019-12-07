@@ -8,6 +8,8 @@ const initialState = {
   currencyFrom: 'USD',
   currencyTo: 'USD',
   currentSum: 0,
+  baseCurrency: 'USD',
+  exchangeRateBaseCurrency: {}
 };
 
 
@@ -50,6 +52,15 @@ export function rootReducer(state = initialState, action) {
         currencyTo: payload
       });
     };
+
+    case ACTIONS_TYPES.SET_BASE_CURRENCY: {
+      const { payload } = action;
+
+      return ({
+        ...state,
+        baseCurrency: payload
+      });
+    }
 
     case ACTIONS_TYPES.SET_CURRENT_SUM: {
       const { payload } = action;

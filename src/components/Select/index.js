@@ -1,11 +1,15 @@
 import { connect } from 'react-redux';
 
 import { Select } from './Select';
-import { setCurrencyFrom, setCurrencyTo } from '../../store/actions'; 
+import { 
+  setCurrencyFrom, 
+  setCurrencyTo, 
+  setBaseCurrency } from '../../store/actions'; 
 
 const mapDispatch2Props = dispatch => ({
   setCurrencyFrom: value => dispatch(setCurrencyFrom(value)),
-  setCurrencyTo: value => dispatch(setCurrencyTo(value))
+  setCurrencyTo: value => dispatch(setCurrencyTo(value)),
+  setBaseCurrency: value => dispatch(setBaseCurrency(value))
 });
 
 const Enhanced = connect(

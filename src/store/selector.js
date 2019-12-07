@@ -4,7 +4,7 @@ const rootSelector = state => state;
 
 export const selectListCurrency = createSelector(
   rootSelector,
-  ({ listCurrency }) => Object.keys(listCurrency)
+  ({ listCurrency }) => listCurrency
 );
 
 export const selectCurrencyFrom = createSelector(
@@ -17,7 +17,6 @@ export const selectCurrencyTo = createSelector(
   ({ currencyTo }) => currencyTo
 );
 
-
 export const selectRates = createSelector(
   rootSelector,
   ({ exchangeRatesUSD }) => exchangeRatesUSD
@@ -26,4 +25,9 @@ export const selectRates = createSelector(
 export const selectCurrentSum = createSelector(
   rootSelector,
   ({ currentSum }) => currentSum
+);
+
+export const selectBaseCurrency = createSelector(
+  rootSelector,
+  ({ baseCurrency }) => baseCurrency
 );

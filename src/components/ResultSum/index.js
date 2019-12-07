@@ -1,7 +1,12 @@
 import { connect } from 'react-redux';
 
 import { ResultSum } from './ResultSum';
-import { selectCurrencyFrom, selectCurrencyTo, selectRates, selectCurrentSum } from '../../store/selector'; 
+import { 
+  selectCurrencyFrom, 
+  selectCurrencyTo, 
+  selectRates, 
+  selectCurrentSum 
+} from '../../store/selector'; 
 
 const mapStateToProps = state => ({
   currencyFrom: selectCurrencyFrom(state),

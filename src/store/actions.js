@@ -12,7 +12,8 @@ export const ACTIONS_TYPES = {
   SET_LOAD_ERROR: 'SET_LOAD_ERROR',
   SET_CURRENCY_FROM: 'SET_CUURENCY_FROM',
   SET_CURRENCY_TO: 'SET_CURRENCY_TO',
-  SET_CURRENT_SUM: 'SET_CURRENT_SUM'
+  SET_CURRENT_SUM: 'SET_CURRENT_SUM',
+  SET_BASE_CURRENCY: 'SET_BASE_CURRENCY'
 };
 
 const saveListCurrency = data => ({
@@ -36,6 +37,11 @@ const stopLoading = () => ({
 const setLoadingError = error => ({
   type: ACTIONS_TYPES.SET_LOAD_ERROR,
   payload: error,
+});
+
+export const setBaseCurrency = value => ({
+  type: ACTIONS_TYPES.SET_BASE_CURRENCY,
+  payload: value
 });
 
 export const setCurrencyFrom = value => ({

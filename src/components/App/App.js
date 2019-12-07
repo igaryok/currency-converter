@@ -2,20 +2,21 @@ import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { Converter } from '../Converter';
-import { listCurrency } from '../listCurrency';
+import { ListRatesCurrency } from '../ListRatesCurrency';
+
 import './App.scss';
 
 export const App = ({ loadData }) => {
   useEffect(() => {
     loadData();
   });
-  console.log('render');
+ 
   return (
     <>
       <h1 className='header'>Converter Currency</h1>
       <Switch>
         <Route path='/' exact component={Converter} />
-        <Route path='/list-curency' component={listCurrency} />
+        <Route path='/currency-rates' component={ListRatesCurrency} />
       </Switch>
     </>
   )

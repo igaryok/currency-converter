@@ -1,0 +1,16 @@
+.button-link {
+  display: block;
+  margin: auto;
+  padding: 10px;
+  width: fit-content;
+  background-color: lightblue;
+  border-radius: 10px;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  transition: box-shadow 300ms;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+}

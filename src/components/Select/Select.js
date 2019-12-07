@@ -2,8 +2,30 @@ import React from 'react';
 
 import './Select.scss';
 
-export const Select = ({ options, name, defaultValue, isInputCurrency, setCurrencyFrom, setCurrencyTo }) => {
-  const handleChange = isInputCurrency ? setCurrencyFrom : setCurrencyTo;
+export const Select = ({ 
+  options, 
+  name, 
+  defaultValue, 
+  typeCurrency, 
+  setCurrencyFrom, 
+  setCurrencyTo, 
+  setBaseCurrency 
+}) => {
+
+  const selectHandleChange = (option) => {
+    switch (option) {
+      case 'currencyFrom':
+        return setCurrencyFrom;
+      case 'currencyTo':
+        return setCurrencyTo;
+      case 'currencyBase':
+        return setBaseCurrency;
+      default:
+        return;
+    }
+  }
+  const handleChange = selectHandleChange(typeCurrency);
+  const listCurrency = Object.keys(options);
 
   return (
     <label>
@@ -12,7 +34,7 @@ export const Select = ({ options, name, defaultValue, isInputCurrency, setCurren
         onChange={e => handleChange(e.target.value)}
         className='currency-selector'
       >
-        {options.map(item => (
+        {listCurrency.map(item => (
           <option 
             key={item} 
             value={item}
