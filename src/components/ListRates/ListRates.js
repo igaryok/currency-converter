@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './ListRates.scss';
 
 export const ListRates = ({ ratesUSD, baseCurrency, listCurrency, sortedListRates, saveSortedListRates }) => {
-  const sortedList = sortedListRates.length 
+  const [pageCurrency, changePageCurrency] = useState(baseCurrency);
+  const sortedList = sortedListRates.length && pageCurrency === baseCurrency
     ? [...sortedListRates] 
     : Object.entries(ratesUSD)
       .map(item => [
@@ -15,19 +16,12 @@ export const ListRates = ({ ratesUSD, baseCurrency, listCurrency, sortedListRate
       ]
       ).sort((a, b) => a[3] - b[3]);
   
-  // useEffect(() => {
-  //  const  newSortedList = Object.entries(ratesUSD)
-  //   .map(item => [
-  //     item[0], 
-  //     item[1] / ratesUSD[baseCurrency], 
-  //     listCurrency[item[0]], 
-  //     1
-  //   ]
-  //   ).sort((a, b) => a[3] - b[3]);
+  useEffect(() => {
+    saveSortedListRates(sortedList);
+    changePageCurrency(baseCurrency);
     
-  //   saveSortedListRates(newSortedList);
-    
-  // }, [baseCurrency, ratesUSD, listCurrency, saveSortedListRates]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [baseCurrency]);
   
   const handleClick = ({ target: { id } }) => {
     const elem = sortedList.find(item => item[0] === id);
@@ -45,8 +39,8 @@ export const ListRates = ({ ratesUSD, baseCurrency, listCurrency, sortedListRate
 
       return a[3] - b[3];
     });
+    
     saveSortedListRates(sortedList);
-    // changeSortedList([...sortedList]);
   }
   console.log('render');
   return (
@@ -82,5 +76,10 @@ export const ListRates = ({ ratesUSD, baseCurrency, listCurrency, sortedListRate
 ListRates.propTypes = {
   baseCurrency: PropTypes.string.isRequired,
   ratesUSD: PropTypes.shape().isRequired,
-  listCurrency: PropTypes.shape().isRequired
+  listCurrency: PropTypes.shape().isRequired,
+  sortedListRates: PropTypes.arrayOf(
+    PropTypes.arrayOf(
+      PropTypes.shape()
+    )
+  ).isRequired
 };
