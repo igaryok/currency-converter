@@ -31,3 +31,8 @@ export const selectBaseCurrency = createSelector(
   rootSelector,
   ({ baseCurrency }) => baseCurrency
 );
+
+export const selectSortedListRates = createSelector(
+  rootSelector,
+  ({ sortedListRates }) => sortedListRates
+);

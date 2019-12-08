@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import './ListRates.scss';
 
-export const ListRates = ({ ratesUSD, baseCurrency, listCurrency }) => {
-  const processedList = Object.entries(ratesUSD)
+export const ListRates = ({ ratesUSD, baseCurrency, listCurrency, sortedListRates, saveSortedListRates }) => {
+  const sortedList = sortedListRates.length 
+    ? [...sortedListRates] 
+    : Object.entries(ratesUSD)
       .map(item => [
         item[0], 
         item[1] / ratesUSD[baseCurrency], 
         listCurrency[item[0]], 
         1
       ]
-    ).sort((a, b) => a[3] - b[3]);
-  const [sortedList, changeSortedList] = useState([...processedList]);
+      ).sort((a, b) => a[3] - b[3]);
   
-  useEffect(() => {
-    changeSortedList([...processedList]);
-    // eslint-disable-next-line
-  }, [baseCurrency, ratesUSD]);
+  // useEffect(() => {
+  //  const  newSortedList = Object.entries(ratesUSD)
+  //   .map(item => [
+  //     item[0], 
+  //     item[1] / ratesUSD[baseCurrency], 
+  //     listCurrency[item[0]], 
+  //     1
+  //   ]
+  //   ).sort((a, b) => a[3] - b[3]);
+    
+  //   saveSortedListRates(newSortedList);
+    
+  // }, [baseCurrency, ratesUSD, listCurrency, saveSortedListRates]);
   
   const handleClick = ({ target: { id } }) => {
     const elem = sortedList.find(item => item[0] === id);
@@ -35,10 +45,10 @@ export const ListRates = ({ ratesUSD, baseCurrency, listCurrency }) => {
 
       return a[3] - b[3];
     });
-
-    changeSortedList([...sortedList]);
+    saveSortedListRates(sortedList);
+    // changeSortedList([...sortedList]);
   }
-
+  console.log('render');
   return (
     <table className="table-rates">
       <thead>

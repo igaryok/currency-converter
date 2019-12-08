@@ -9,7 +9,7 @@ const initialState = {
   currencyTo: 'USD',
   currentSum: 0,
   baseCurrency: 'USD',
-  exchangeRateBaseCurrency: {}
+  sortedListRates: []
 };
 
 
@@ -71,6 +71,15 @@ export function rootReducer(state = initialState, action) {
       });
 
     };
+
+    case ACTIONS_TYPES.SET_SORTED_LIST_RATES: {
+      const { payload } = action;
+
+      return ({
+        ...state,
+        sortedListRates: payload
+      });
+    }
 
     case ACTIONS_TYPES.START_LOADING: {
       return ({

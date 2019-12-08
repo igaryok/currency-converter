@@ -13,7 +13,8 @@ export const ACTIONS_TYPES = {
   SET_CURRENCY_FROM: 'SET_CUURENCY_FROM',
   SET_CURRENCY_TO: 'SET_CURRENCY_TO',
   SET_CURRENT_SUM: 'SET_CURRENT_SUM',
-  SET_BASE_CURRENCY: 'SET_BASE_CURRENCY'
+  SET_BASE_CURRENCY: 'SET_BASE_CURRENCY',
+  SET_SORTED_LIST_RATES: 'SET_SORTED_LIST_RATES' 
 };
 
 const saveListCurrency = data => ({
@@ -57,6 +58,11 @@ export const setCurrencyTo = value => ({
 export const setCurrentSum = value => ({
   type: ACTIONS_TYPES.SET_CURRENT_SUM,
   payload: value
+});
+
+export const setSortedListRates = data => ({
+  type: ACTIONS_TYPES.SET_SORTED_LIST_RATES,
+  payload: data
 });
 
 export const loadData = () => dispatch => {
