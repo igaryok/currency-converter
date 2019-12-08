@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Select } from '../Select';
 import { InputSum } from '../InputSum';
@@ -7,7 +8,11 @@ import { ResultSum } from '../ResultSum';
 
 import './Converter.scss';
 
-export const Converter = ({ listCurrency }) => {
+export const Converter = ({ 
+  listCurrency, 
+  currencyFrom, 
+  currencyTo, 
+  currentSum }) => {
   
   return (
     <>
@@ -17,17 +22,17 @@ export const Converter = ({ listCurrency }) => {
             className='coverter-currency__from' 
             options={listCurrency} 
             name='from currency' 
-            defaultValue='USD' 
+            defaultValue={currencyFrom} 
             typeCurrency='currencyFrom'
           />
-          <InputSum defaultValue={'0'} />
+          <InputSum defaultValue={currentSum} />
         </div>
         <div className='converter-currency'>
           <Select
             className='converter-currency__to' 
             options={listCurrency} 
             name='to currency' 
-            defaultValue='USD'
+            defaultValue={currencyTo}
             typeCurrency='currencyTo' 
           />
           <ResultSum />
@@ -37,3 +42,10 @@ export const Converter = ({ listCurrency }) => {
     </>
   );
 }
+
+Converter.propTypes = {
+  listCurrency: PropTypes.shape().isRequired,
+  currencyFrom: PropTypes.string.isRequired,
+  currencyTo: PropTypes.string.isRequired,
+  currentSum: PropTypes.number.isRequired
+};

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Select } from '../Select';
 import { ListRates } from '../ListRates';
 
 import './ListRatesCurrency.scss';
 
-export const ListRatesCurrency = ({ listCurrency }) => {
+export const ListRatesCurrency = ({ listCurrency, baseCurrency }) => {
   return(
     <div className="rates-currency">
       <Link className='button-link' to={'/'}>Currency autoconverter</Link>
@@ -19,10 +20,14 @@ export const ListRatesCurrency = ({ listCurrency }) => {
         className='converter-currency__base' 
         options={listCurrency} 
         name='base currency' 
-        defaultValue='USD'
+        defaultValue={baseCurrency}
         typeCurrency='currencyBase' 
       />
       <ListRates />
     </div>
   );
 }
+
+ListRatesCurrency.propTypes = {
+  listCurrency: PropTypes.shape().isRequired,
+};

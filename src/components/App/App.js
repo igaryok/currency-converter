@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { Converter } from '../Converter';
 import { ListRatesCurrency } from '../ListRatesCurrency';
@@ -20,4 +21,8 @@ export const App = ({ loadData }) => {
       </Switch>
     </>
   )
+};
+
+App.propTypes = {
+  loadData: PropTypes.func.isRequired
 };

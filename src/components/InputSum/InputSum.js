@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Input.scss';
 
@@ -13,3 +14,8 @@ export const InputSum = ({ defaultValue,  setCurrentSum }) => {
     />
   )
 }
+
+InputSum.propTypes = {
+  defaultValue: PropTypes.number.isRequired,
+  setCurrentSum: PropTypes.func
+};

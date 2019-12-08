@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Select.scss';
 
@@ -47,3 +48,13 @@ export const Select = ({
     </label>
   )
 }
+
+Select.propTypes = {
+  options: PropTypes.shape().isRequired,
+  name: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string.isRequired,
+  typeCurrency: PropTypes.string.isRequired,
+  setCurrencyFrom: PropTypes.func.isRequired,
+  setCurrencyTo: PropTypes.func.isRequired,
+  setBaseCurrency: PropTypes.func.isRequired
+};

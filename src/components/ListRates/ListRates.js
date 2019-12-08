@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import './ListRates.scss';
 
@@ -66,4 +67,10 @@ export const ListRates = ({ ratesUSD, baseCurrency, listCurrency }) => {
       </tbody>
     </table>
   );  
+};
+
+ListRates.propTypes = {
+  baseCurrency: PropTypes.string.isRequired,
+  ratesUSD: PropTypes.shape().isRequired,
+  listCurrency: PropTypes.shape().isRequired
 };
