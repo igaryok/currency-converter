@@ -76,6 +76,6 @@ export const loadData = () => dispatch => {
 
     dispatch(saveListCurrency(listCurrencies));
     dispatch(saveRatesUSD(rates.rates));
-  }).catch(error => dispatch(setLoadingError(error)))
+  }).catch(error => dispatch(setLoadingError(error.message)))
     .finally(dispatch(stopLoading()));
 };

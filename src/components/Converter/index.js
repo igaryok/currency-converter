@@ -5,14 +5,18 @@ import {
   selectListCurrency, 
   selectCurrencyFrom, 
   selectCurrencyTo, 
-  selectCurrentSum 
+  selectCurrentSum,
+  selectIsLoading,
+  selectIsErrorLoading, 
 } from '../../store/selector'; 
 
 const mapStateToProps = state => ({
   listCurrency: selectListCurrency(state),
   currencyFrom: selectCurrencyFrom(state),
   currencyTo: selectCurrencyTo(state),
-  currentSum: selectCurrentSum(state)
+  currentSum: selectCurrentSum(state),
+  isLoading: selectIsLoading(state),
+  isErrorLoading: selectIsErrorLoading(state),
 });
 
 const Enhanced = connect(

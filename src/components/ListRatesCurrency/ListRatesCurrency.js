@@ -4,11 +4,20 @@ import PropTypes from 'prop-types';
 
 import { Select } from '../Select';
 import { ListRates } from '../ListRates';
+import { Loader } from '../Loader';
+import { Error } from '../Error';
 
 import './ListRatesCurrency.scss';
 
-export const ListRatesCurrency = ({ listCurrency, baseCurrency }) => {
-  return(
+export const ListRatesCurrency = ({ 
+  listCurrency, 
+  baseCurrency,
+  isLoading,
+  isErrorLoading 
+}) => (
+  <>
+    {isLoading && <Loader />}
+    {isErrorLoading && <Error />}
     <div className="rates-currency">
       <Link className='button-link' to={'/'}>Currency autoconverter</Link>
       <h1>Rates currency</h1>
@@ -25,9 +34,11 @@ export const ListRatesCurrency = ({ listCurrency, baseCurrency }) => {
       />
       <ListRates />
     </div>
-  );
-}
+  </>
+);
 
 ListRatesCurrency.propTypes = {
   listCurrency: PropTypes.shape().isRequired,
+  baseCurrency: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool,
 };

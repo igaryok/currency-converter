@@ -36,3 +36,13 @@ export const selectSortedListRates = createSelector(
   rootSelector,
   ({ sortedListRates }) => sortedListRates
 );
+
+export const selectIsLoading = createSelector(
+  rootSelector,
+  ({ isLoading }) => isLoading 
+);
+
+export const selectIsErrorLoading = createSelector(
+  rootSelector,
+  ({ errorLoading }) => errorLoading 
+);

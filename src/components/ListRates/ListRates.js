@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import './ListRates.scss';
 
-export const ListRates = ({ ratesUSD, baseCurrency, listCurrency, sortedListRates, saveSortedListRates }) => {
+export const ListRates = ({ 
+  ratesUSD, 
+  baseCurrency, 
+  listCurrency, 
+  sortedListRates, 
+  saveSortedListRates }) => {
+
   const [pageCurrency, changePageCurrency] = useState(baseCurrency);
   const sortedList = sortedListRates.length && pageCurrency === baseCurrency
     ? [...sortedListRates] 
@@ -42,7 +48,7 @@ export const ListRates = ({ ratesUSD, baseCurrency, listCurrency, sortedListRate
     
     saveSortedListRates(sortedList);
   }
-  console.log('render');
+  
   return (
     <table className="table-rates">
       <thead>
@@ -77,9 +83,5 @@ ListRates.propTypes = {
   baseCurrency: PropTypes.string.isRequired,
   ratesUSD: PropTypes.shape().isRequired,
   listCurrency: PropTypes.shape().isRequired,
-  sortedListRates: PropTypes.arrayOf(
-    PropTypes.arrayOf(
-      PropTypes.shape()
-    )
-  ).isRequired
+  sortedListRates: PropTypes.arrayOf(PropTypes.array).isRequired
 };
